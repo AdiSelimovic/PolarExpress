@@ -18,6 +18,7 @@ export class BookNow {
     email: '',
     phone: '',
     date: '',
+    departureCity: '',
     message: ''
   };
 
@@ -47,7 +48,8 @@ export class BookNow {
       this.formData.name &&
       this.formData.email &&
       this.formData.phone &&
-      this.formData.date
+      this.formData.date &&
+      this.formData.departureCity
     );
   }
 }

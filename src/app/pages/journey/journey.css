@@ -60,6 +60,69 @@
   margin: 0 0 4rem 0;
 }
 
+.departure-cities {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #d4a32a;
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #c8d0db;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.city-card {
+  background: linear-gradient(135deg, rgba(36, 52, 71, 0.8) 0%, rgba(26, 35, 50, 0.8) 100%);
+  border: 2px solid rgba(212, 163, 42, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.city-card:hover {
+  border-color: rgba(212, 163, 42, 0.7);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(212, 163, 42, 0.3);
+}
+
+.city-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #d4a32a;
+  margin: 0 0 1rem 0;
+}
+
+.station-name {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.station-address {
+  font-size: 1rem;
+  color: #c8d0db;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .timeline {
   position: relative;
   max-width: 900px;
