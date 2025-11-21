@@ -1,0 +1,50 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky -->
+  <rect width="400" height="300" fill="#2d3e50"/>
+
+  <!-- Mountains -->
+  <polygon points="0,180 100,80 200,180" fill="#4a5f7f" opacity="0.8"/>
+  <polygon points="150,180 250,60 350,180" fill="#3d5266" opacity="0.9"/>
+  <polygon points="280,180 400,100 400,180" fill="#4a5f7f" opacity="0.8"/>
+
+  <!-- Snow caps on mountains -->
+  <polygon points="100,80 90,95 110,95" fill="#f0f9ff"/>
+  <polygon points="250,60 235,80 265,80" fill="#f0f9ff"/>
+
+  <!-- Pine trees -->
+  <g transform="translate(80, 160)">
+    <polygon points="0,-40 -15,-20 -10,-20 -18,-5 -12,-5 -20,10 20,10 12,-5 18,-5 10,-20 15,-20" fill="#1e4d2b"/>
+    <rect x="-4" y="10" width="8" height="15" fill="#3d2817"/>
+  </g>
+
+  <g transform="translate(320, 170)">
+    <polygon points="0,-35 -12,-18 -8,-18 -14,-5 -10,-5 -15,8 15,8 10,-5 14,-5 8,-18 12,-18" fill="#1e4d2b"/>
+    <rect x="-3" y="8" width="6" height="12" fill="#3d2817"/>
+  </g>
+
+  <g transform="translate(180, 175)">
+    <polygon points="0,-30 -10,-15 -7,-15 -12,-3 -8,-3 -13,7 13,7 8,-3 12,-3 7,-15 10,-15" fill="#1e4d2b"/>
+    <rect x="-3" y="7" width="6" height="10" fill="#3d2817"/>
+  </g>
+
+  <!-- Snowy ground with drifts -->
+  <ellipse cx="200" cy="220" rx="250" ry="40" fill="#e0f2fe"/>
+  <ellipse cx="100" cy="240" rx="150" ry="30" fill="#f0f9ff"/>
+  <ellipse cx="320" cy="235" rx="120" ry="25" fill="#f0f9ff"/>
+
+  <!-- Snowflakes falling -->
+  <g opacity="0.8">
+    <text x="50" y="50" font-size="20" fill="white">❅</text>
+    <text x="150" y="80" font-size="15" fill="white">❆</text>
+    <text x="250" y="60" font-size="18" fill="white">❅</text>
+    <text x="320" y="100" font-size="22" fill="white">❆</text>
+    <text x="100" y="130" font-size="16" fill="white">❅</text>
+    <text x="280" y="140" font-size="20" fill="white">❅</text>
+    <text x="180" y="110" font-size="14" fill="white">❆</text>
+    <text x="350" y="130" font-size="17" fill="white">❅</text>
+  </g>
+
+  <!-- Moon -->
+  <circle cx="340" cy="50" r="25" fill="#f0f9ff" opacity="0.9"/>
+  <circle cx="335" cy="48" r="22" fill="#2d3e50"/>
+</svg>
