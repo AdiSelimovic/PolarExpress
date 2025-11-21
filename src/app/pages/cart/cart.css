@@ -135,6 +135,14 @@
   margin: 0 0 0.25rem 0;
 }
 
+.item-departure {
+  color: #d4a32a;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  font-style: italic;
+}
+
 .item-price {
   color: #8e9aaf;
   font-size: 0.95rem;

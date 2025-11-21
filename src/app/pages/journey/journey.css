@@ -120,7 +120,34 @@
   font-size: 1rem;
   color: #c8d0db;
   line-height: 1.6;
-  margin: 0;
+  margin: 0 0 1rem 0;
+}
+
+.city-distance {
+  font-size: 0.95rem;
+  color: #d4a32a;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  font-style: italic;
+}
+
+.select-city-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #d4a32a 0%, #b8891f 100%);
+  color: #1a2332;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 163, 42, 0.3);
+}
+
+.select-city-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 163, 42, 0.5);
 }
 
 .timeline {

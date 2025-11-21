@@ -18,41 +18,15 @@
       <p class="section-subtitle">The Polar Express departs from multiple major cities across North America</p>
 
       <div class="cities-grid">
-        <div class="city-card">
-          <h3 class="city-name">New York City</h3>
-          <p class="station-name">Grand Central Terminal</p>
-          <p class="station-address">89 E 42nd Street<br>New York, NY 10017</p>
-        </div>
-
-        <div class="city-card">
-          <h3 class="city-name">Chicago</h3>
-          <p class="station-name">Union Station</p>
-          <p class="station-address">225 S Canal Street<br>Chicago, IL 60606</p>
-        </div>
-
-        <div class="city-card">
-          <h3 class="city-name">Toronto</h3>
-          <p class="station-name">Union Station</p>
-          <p class="station-address">65 Front Street West<br>Toronto, ON M5J 1E6</p>
-        </div>
-
-        <div class="city-card">
-          <h3 class="city-name">Boston</h3>
-          <p class="station-name">South Station</p>
-          <p class="station-address">700 Atlantic Avenue<br>Boston, MA 02110</p>
-        </div>
-
-        <div class="city-card">
-          <h3 class="city-name">Montreal</h3>
-          <p class="station-name">Gare Centrale</p>
-          <p class="station-address">895 Rue de la Gauchetière O<br>Montreal, QC H3B 4G1</p>
-        </div>
-
-        <div class="city-card">
-          <h3 class="city-name">Seattle</h3>
-          <p class="station-name">King Street Station</p>
-          <p class="station-address">303 S Jackson Street<br>Seattle, WA 98104</p>
-        </div>
+        @for (city of cities; track city.id) {
+          <div class="city-card" (click)="selectCity(city.id)">
+            <h3 class="city-name">{{ city.name }}</h3>
+            <p class="station-name">{{ city.station }}</p>
+            <p class="station-address">{{ city.address }}</p>
+            <p class="city-distance">{{ city.distanceToChurchill }} miles to Churchill</p>
+            <button class="select-city-btn">Select & Book Tickets</button>
+          </div>
+        }
       </div>
     </div>
 

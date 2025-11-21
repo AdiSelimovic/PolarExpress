@@ -11,6 +11,20 @@
   <div class="container">
     <h1 class="page-title">Choose Your Experience</h1>
 
+    @if (selectedCity()) {
+      <div class="city-banner">
+        <p class="selected-city-text">
+          Departing from: <strong>{{ selectedCity()!.name }}</strong> - {{ selectedCity()!.station }}
+        </p>
+        <p class="city-info">{{ selectedCity()!.distanceToChurchill }} miles to Churchill, Manitoba</p>
+      </div>
+    } @else {
+      <div class="no-city-banner">
+        <p>Please select a departure city first</p>
+        <a href="/journey" class="select-city-link">Choose Departure City</a>
+      </div>
+    }
+
     <div class="pricing-cards">
       <!-- Coach Class Card -->
       <div class="pricing-card">
@@ -24,7 +38,7 @@
           <h2 class="class-name">Coach Class</h2>
         </div>
         <div class="price">
-          <span class="price-amount">$89</span>
+          <span class="price-amount">${{ coachPrice() }}</span>
           <span class="price-period">per person</span>
         </div>
         <ul class="features">
@@ -51,7 +65,7 @@
           <h2 class="class-name">First Class</h2>
         </div>
         <div class="price">
-          <span class="price-amount">$149</span>
+          <span class="price-amount">${{ firstPrice() }}</span>
           <span class="price-period">per person</span>
         </div>
         <ul class="features">

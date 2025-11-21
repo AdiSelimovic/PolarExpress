@@ -29,6 +29,7 @@
               <div class="item-details">
                 <h3 class="item-name">{{ item.name }}</h3>
                 <p class="item-type">{{ item.type === 'coach' ? 'Coach Class' : 'First Class' }}</p>
+                <p class="item-departure">Departing from: {{ item.departureCityName }}</p>
                 <p class="item-price">${{ item.price }} per person</p>
               </div>
               <div class="item-actions">

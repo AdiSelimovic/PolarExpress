@@ -6,6 +6,8 @@ export interface CartItem {
   price: number;
   quantity: number;
   type: 'coach' | 'first';
+  departureCity: string;
+  departureCityName: string;
 }
 
 @Injectable({
@@ -26,16 +28,20 @@ export class CartService {
 
   addToCart(item: Omit<CartItem, 'quantity'>) {
     const currentItems = this.cartItems();
-    const existingItem = currentItems.find(i => i.id === item.id);
+    // Match by both type and departure city
+    const itemKey = `${item.type}-${item.departureCity}`;
+    const existingItem = currentItems.find(i =>
+      `${i.type}-${i.departureCity}` === itemKey
+    );
 
     if (existingItem) {
       this.cartItems.set(
         currentItems.map(i =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+          `${i.type}-${i.departureCity}` === itemKey ? { ...i, quantity: i.quantity + 1 } : i
         )
       );
     } else {
-      this.cartItems.set([...currentItems, { ...item, quantity: 1 }]);
+      this.cartItems.set([...currentItems, { ...item, id: itemKey, quantity: 1 }]);
     }
   }
 
