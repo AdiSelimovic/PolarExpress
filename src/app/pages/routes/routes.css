@@ -78,12 +78,25 @@
 
 .city-marker circle {
   transition: all 0.3s ease;
+}
+
+.city-marker.clickable {
   cursor: pointer;
 }
 
-.city-marker:hover circle {
-  r: 12;
+.city-marker.clickable circle {
+  cursor: pointer;
+}
+
+.city-marker.clickable:hover circle {
+  r: 14;
   filter: url(#glow);
+  stroke-width: 3;
+}
+
+.city-marker.clickable:hover .city-label {
+  fill: #FFF;
+  font-weight: 700;
 }
 
 .city-label {
