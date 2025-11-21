@@ -42,6 +42,19 @@
   max-height: 800px;
 }
 
+/* Background Map Styling */
+.background-map {
+  transition: opacity 0.5s ease;
+}
+
+.background-map path {
+  transition: all 0.3s ease;
+}
+
+.route-map:hover .background-map {
+  opacity: 0.25 !important;
+}
+
 .route-line {
   opacity: 0;
   animation: drawLine 1.5s ease-out forwards;
