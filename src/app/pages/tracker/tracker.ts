@@ -1,7 +1,9 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { CitySelectionService, DEPARTURE_CITIES } from '../../services/city-selection.service';
+import { CartService } from '../../services/cart.service';
 
 interface JourneyMilestone {
   name: string;
@@ -12,17 +14,35 @@ interface JourneyMilestone {
 @Component({
   selector: 'app-tracker',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './tracker.html',
   styleUrls: ['./tracker.css']
 })
 export class Tracker {
   private cityService = inject(CitySelectionService);
+  cartService = inject(CartService);
 
   // Journey tracking
   currentProgress = signal(0); // 0-100%
-  selectedCity = this.cityService.city;
   cities = DEPARTURE_CITIES;
+
+  // Get purchased city from cart
+  purchasedCity = computed(() => {
+    const items = this.cartService.items();
+    if (items.length === 0) return null;
+
+    // Get the departure city from the first item (all items should have same city)
+    const cityId = items[0].departureCity;
+    return DEPARTURE_CITIES.find(c => c.id === cityId) || null;
+  });
+
+  // Use purchased city if available, otherwise fall back to selected city
+  selectedCity = computed(() => {
+    const purchased = this.purchasedCity();
+    return purchased || this.cityService.city();
+  });
+
+  hasTickets = computed(() => this.cartService.totalItems() > 0);
 
   // Milestones along the route
   milestones: JourneyMilestone[] = [
@@ -70,10 +90,5 @@ export class Tracker {
 
   updateProgress(value: number) {
     this.currentProgress.set(value);
-  }
-
-  selectDepartureCity(cityId: string) {
-    this.cityService.selectCity(cityId);
-    this.currentProgress.set(0); // Reset progress when changing city
   }
 }

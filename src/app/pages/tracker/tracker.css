@@ -84,6 +84,83 @@
   margin: 0;
 }
 
+/* No Tickets Prompt */
+.no-tickets-prompt {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 4rem 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.no-tickets-prompt svg {
+  color: #FFD700;
+  margin-bottom: 2rem;
+  opacity: 0.7;
+}
+
+.no-tickets-prompt h2 {
+  font-size: 2rem;
+  color: #FFD700;
+  margin-bottom: 1rem;
+}
+
+.no-tickets-prompt p {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.no-tickets-prompt .subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.action-btn {
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #1a1a2e;
+  border: none;
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+}
+
+.action-btn.secondary {
+  background: rgba(255, 215, 0, 0.1);
+  color: #FFD700;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+.action-btn.secondary:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #FFD700;
+  transform: translateY(-3px);
+}
+
 /* Journey Info Card */
 .journey-info-card {
   background: rgba(255, 255, 255, 0.05);
@@ -120,6 +197,33 @@
 .change-city-btn:hover {
   background: #FFD700;
   color: #1a1a2e;
+}
+
+.view-tickets-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 215, 0, 0.2);
+  border: 1px solid #FFD700;
+  color: #FFD700;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.view-tickets-btn:hover {
+  background: #FFD700;
+  color: #1a1a2e;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.view-tickets-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .journey-details {

@@ -3,28 +3,41 @@
     <h1 class="page-title">Journey Tracker</h1>
     <p class="page-subtitle">Track your current location on the Polar Express</p>
 
-    <!-- City Selection -->
-    @if (!selectedCity()) {
-      <div class="city-selection-prompt">
-        <h2>Select Your Departure City</h2>
-        <p>Choose where your journey begins to start tracking</p>
-        <div class="city-selector-grid">
-          @for (city of cities; track city.id) {
-            <button class="city-selector-btn" (click)="selectDepartureCity(city.id)">
-              <h3>{{ city.name }}</h3>
-              <p>{{ city.distanceToChurchill }} miles</p>
-            </button>
-          }
+    <!-- No Tickets Message -->
+    @if (!hasTickets()) {
+      <div class="no-tickets-prompt">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="20" height="10" rx="2" stroke="#FFD700" stroke-width="2"/>
+          <line x1="2" y1="13" x2="22" y2="13" stroke="#FFD700" stroke-width="2" stroke-dasharray="2,2"/>
+          <circle cx="6" cy="10.5" r="0.5" fill="#FFD700"/>
+          <circle cx="6" cy="15.5" r="0.5" fill="#FFD700"/>
+          <circle cx="18" cy="10.5" r="0.5" fill="#FFD700"/>
+          <circle cx="18" cy="15.5" r="0.5" fill="#FFD700"/>
+        </svg>
+        <h2>No Tickets Purchased</h2>
+        <p>You need to purchase tickets before you can track your journey.</p>
+        <p class="subtitle">Choose your departure city and select your tickets to begin tracking.</p>
+        <div class="action-buttons">
+          <a routerLink="/journey" class="action-btn primary">Select Departure City</a>
+          <a routerLink="/cart" class="action-btn secondary">View Cart</a>
         </div>
       </div>
     }
 
-    @if (selectedCity()) {
+    @if (hasTickets() && selectedCity()) {
       <!-- Current Journey Info -->
       <div class="journey-info-card">
         <div class="info-header">
           <h2>Your Current Journey</h2>
-          <button class="change-city-btn" (click)="selectDepartureCity('')">Change City</button>
+          @if (cartService.totalItems() > 0) {
+            <a routerLink="/cart" class="view-tickets-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 2L7 7H21L19 2H9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <rect x="6" y="7" width="16" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              View Tickets ({{ cartService.totalItems() }})
+            </a>
+          }
         </div>
         <div class="journey-details">
           <div class="detail-item">
