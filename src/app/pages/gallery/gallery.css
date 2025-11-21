@@ -80,27 +80,29 @@
   box-shadow: 0 15px 40px rgba(212, 163, 42, 0.3);
 }
 
-.placeholder-image {
+.gallery-item img {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(36, 52, 71, 0.9) 0%, rgba(26, 35, 50, 0.9) 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.placeholder-image svg {
-  color: #d4a32a;
-  opacity: 0.5;
+.gallery-item:hover img {
+  transform: scale(1.05);
 }
 
-.placeholder-image p {
-  color: #c8d0db;
+.gallery-item p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: #fff;
   font-size: 1.1rem;
   font-weight: 500;
   margin: 0;
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
 }
 
 @media (max-width: 768px) {

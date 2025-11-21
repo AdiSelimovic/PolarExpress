@@ -1,0 +1,63 @@
+<div class="cart">
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+  </div>
+
+  <div class="container">
+    <h1 class="page-title">Your Cart</h1>
+
+    @if (cartService.totalItems() === 0) {
+      <div class="empty-cart">
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 2L7 7H21L19 2H9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="6" y="7" width="16" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+          <circle cx="10" cy="21" r="1" fill="currentColor"/>
+          <circle cx="18" cy="21" r="1" fill="currentColor"/>
+        </svg>
+        <h2>Your cart is empty</h2>
+        <p>Add some magical experiences to your journey!</p>
+        <button (click)="continueShopping()" class="continue-btn">Browse Experiences</button>
+      </div>
+    } @else {
+      <div class="cart-content">
+        <div class="cart-items">
+          @for (item of cartService.items(); track item.id) {
+            <div class="cart-item">
+              <div class="item-details">
+                <h3 class="item-name">{{ item.name }}</h3>
+                <p class="item-type">{{ item.type === 'coach' ? 'Coach Class' : 'First Class' }}</p>
+                <p class="item-price">${{ item.price }} per person</p>
+              </div>
+              <div class="item-actions">
+                <div class="quantity-control">
+                  <button (click)="updateQuantity(item.id, item.quantity - 1)" class="qty-btn">−</button>
+                  <span class="quantity">{{ item.quantity }}</span>
+                  <button (click)="updateQuantity(item.id, item.quantity + 1)" class="qty-btn">+</button>
+                </div>
+                <div class="item-total">${{ item.price * item.quantity }}</div>
+                <button (click)="removeItem(item.id)" class="remove-btn">Remove</button>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="cart-summary">
+          <h2 class="summary-title">Order Summary</h2>
+          <div class="summary-row">
+            <span>Total Items:</span>
+            <span>{{ cartService.totalItems() }}</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total:</span>
+            <span>${{ cartService.totalPrice() }}</span>
+          </div>
+          <button (click)="proceedToCheckout()" class="checkout-btn">Proceed to Checkout</button>
+          <button (click)="continueShopping()" class="continue-shopping-btn">Continue Shopping</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

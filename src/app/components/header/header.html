@@ -16,6 +16,17 @@
       <a routerLink="/journey" routerLinkActive="active" class="nav-link">Journey</a>
       <a routerLink="/experience" routerLinkActive="active" class="nav-link">Experience</a>
       <a routerLink="/gallery" routerLinkActive="active" class="nav-link">Gallery</a>
+      <a routerLink="/cart" routerLinkActive="active" class="nav-link cart-link">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 2L7 7H21L19 2H9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="6" y="7" width="16" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+          <circle cx="10" cy="21" r="1" fill="currentColor"/>
+          <circle cx="18" cy="21" r="1" fill="currentColor"/>
+        </svg>
+        @if (cartService.totalItems() > 0) {
+          <span class="cart-badge">{{ cartService.totalItems() }}</span>
+        }
+      </a>
       <a routerLink="/book-now" routerLinkActive="active" class="nav-link book-now-btn">Book Now</a>
     </nav>
   </div>

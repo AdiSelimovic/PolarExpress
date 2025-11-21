@@ -3,6 +3,7 @@ import { Home } from './pages/home/home';
 import { Journey } from './pages/journey/journey';
 import { Experience } from './pages/experience/experience';
 import { Gallery } from './pages/gallery/gallery';
+import { Cart } from './pages/cart/cart';
 import { BookNow } from './pages/book-now/book-now';
 
 export const routes: Routes = [
@@ -10,6 +11,7 @@ export const routes: Routes = [
   { path: 'journey', component: Journey },
   { path: 'experience', component: Experience },
   { path: 'gallery', component: Gallery },
+  { path: 'cart', component: Cart },
   { path: 'book-now', component: BookNow },
   { path: '**', redirectTo: '' }
 ];

@@ -8,72 +8,90 @@
 
   <div class="container">
     <h1 class="page-title">Book Your Journey</h1>
-    <p class="page-subtitle">Reserve your seat on the Polar Express today</p>
+    <p class="page-subtitle">Complete your reservation details</p>
 
-    <div class="booking-form-container">
-      <form class="booking-form">
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required>
-        </div>
+    @if (submitted()) {
+      <div class="success-message">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#4ade80" stroke-width="2"/>
+          <path d="M8 12l2 2 4-4" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h2>Booking Confirmed!</h2>
+        <p>Your magical journey has been booked. Check your email for confirmation details.</p>
+      </div>
+    } @else {
+      <div class="booking-form-container">
+        <form class="booking-form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="formData.name" required>
+          </div>
 
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required>
-        </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" [(ngModel)]="formData.email" required>
+          </div>
 
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" required>
-        </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required>
+          </div>
 
-        <div class="form-row">
           <div class="form-group">
             <label for="date">Journey Date</label>
-            <input type="date" id="date" name="date" required>
+            <input type="date" id="date" name="date" [(ngModel)]="formData.date" required>
           </div>
 
           <div class="form-group">
-            <label for="passengers">Number of Passengers</label>
-            <input type="number" id="passengers" name="passengers" min="1" max="10" value="1" required>
+            <label for="message">Special Requests (Optional)</label>
+            <textarea id="message" name="message" [(ngModel)]="formData.message" rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Complete Booking
+          </button>
+        </form>
+
+        <div class="booking-info">
+          <h3>Your Order</h3>
+          @if (cartService.totalItems() > 0) {
+            <div class="order-items">
+              @for (item of cartService.items(); track item.id) {
+                <div class="order-item">
+                  <div class="order-item-details">
+                    <strong>{{ item.name }}</strong>
+                    <span>x{{ item.quantity }}</span>
+                  </div>
+                  <div class="order-item-price">${{ item.price * item.quantity }}</div>
+                </div>
+              }
+            </div>
+            <div class="order-total">
+              <strong>Total:</strong>
+              <strong>${{ cartService.totalPrice() }}</strong>
+            </div>
+          } @else {
+            <p class="empty-cart-message">Your cart is empty. <a href="/experience">Add experiences</a> to book.</p>
+          }
+
+          <div class="whats-included">
+            <h4>What's Included</h4>
+            <ul>
+              <li>✓ Round trip to the North Pole</li>
+              <li>✓ Hot chocolate and treats</li>
+              <li>✓ Visit with Santa Claus</li>
+              <li>✓ Keepsake sleigh bell</li>
+              <li>✓ Magical memories</li>
+            </ul>
+          </div>
+
+          <div class="contact-info">
+            <h4>Need Help?</h4>
+            <p>Call us at: <strong>(555) POLAR-00</strong></p>
+            <p>Email: <strong>info&#64;polarexpress.com</strong></p>
           </div>
         </div>
-
-        <div class="form-group">
-          <label for="class">Choose Your Experience</label>
-          <select id="class" name="class" required>
-            <option value="">Select a class</option>
-            <option value="coach">Coach Class - $89 per person</option>
-            <option value="first">First Class - $149 per person</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="message">Special Requests (Optional)</label>
-          <textarea id="message" name="message" rows="4"></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">
-          Book Now
-        </button>
-      </form>
-
-      <div class="booking-info">
-        <h3>What's Included</h3>
-        <ul>
-          <li>✓ Round trip to the North Pole</li>
-          <li>✓ Hot chocolate and treats</li>
-          <li>✓ Visit with Santa Claus</li>
-          <li>✓ Keepsake sleigh bell</li>
-          <li>✓ Magical memories</li>
-        </ul>
-
-        <div class="contact-info">
-          <h4>Need Help?</h4>
-          <p>Call us at: <strong>(555) POLAR-00</strong></p>
-          <p>Email: <strong>info&#64;polarexpress.com</strong></p>
-        </div>
       </div>
-    </div>
+    }
   </div>
 </div>
