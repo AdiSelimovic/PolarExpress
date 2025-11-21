@@ -1,0 +1,151 @@
+<div class="routes">
+  <div class="container">
+    <h1 class="page-title">Route Map</h1>
+    <p class="page-subtitle">All routes converge in Winnipeg before continuing north to Churchill, Manitoba</p>
+
+    <!-- Route Visualization -->
+    <div class="route-map-container">
+      <svg class="route-map" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+        <!-- Define gradients for the route lines -->
+        <defs>
+          <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.3" />
+            <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+          </linearGradient>
+
+          <!-- Glow effect -->
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Routes from cities to Winnipeg -->
+        <!-- New York to Winnipeg -->
+        <line x1="750" y1="550" x2="500" y2="350" stroke="url(#routeGradient)" stroke-width="2" class="route-line" />
+
+        <!-- Chicago to Winnipeg -->
+        <line x1="650" y1="500" x2="500" y2="350" stroke="url(#routeGradient)" stroke-width="2" class="route-line" />
+
+        <!-- Boston to Winnipeg -->
+        <line x1="850" y1="500" x2="500" y2="350" stroke="url(#routeGradient)" stroke-width="2" class="route-line" />
+
+        <!-- Toronto to Winnipeg -->
+        <line x1="700" y1="450" x2="500" y2="350" stroke="url(#routeGradient)" stroke-width="2" class="route-line" />
+
+        <!-- Montreal to Winnipeg -->
+        <line x1="800" y1="450" x2="500" y2="350" stroke="url(#routeGradient)" stroke-width="2" class="route-line" />
+
+        <!-- Seattle to Winnipeg -->
+        <line x1="200" y1="450" x2="500" y2="350" stroke="url(#routeGradient)" stroke-width="2" class="route-line" />
+
+        <!-- Winnipeg to Churchill (main route north) -->
+        <line x1="500" y1="350" x2="500" y2="100" stroke="#FFD700" stroke-width="4" class="main-route" filter="url(#glow)" />
+
+        <!-- City markers -->
+        <!-- Departure Cities -->
+        <g class="city-marker" data-city="new-york">
+          <circle cx="750" cy="550" r="10" fill="#4A90E2" stroke="#FFD700" stroke-width="2" />
+          <text x="750" y="580" text-anchor="middle" class="city-label">New York City</text>
+          <text x="750" y="595" text-anchor="middle" class="city-distance">2,100 mi</text>
+        </g>
+
+        <g class="city-marker" data-city="chicago">
+          <circle cx="650" cy="500" r="10" fill="#4A90E2" stroke="#FFD700" stroke-width="2" />
+          <text x="650" y="530" text-anchor="middle" class="city-label">Chicago</text>
+          <text x="650" y="545" text-anchor="middle" class="city-distance">1,200 mi</text>
+        </g>
+
+        <g class="city-marker" data-city="boston">
+          <circle cx="850" cy="500" r="10" fill="#4A90E2" stroke="#FFD700" stroke-width="2" />
+          <text x="850" y="530" text-anchor="middle" class="city-label">Boston</text>
+          <text x="850" y="545" text-anchor="middle" class="city-distance">2,300 mi</text>
+        </g>
+
+        <g class="city-marker" data-city="toronto">
+          <circle cx="700" cy="450" r="10" fill="#4A90E2" stroke="#FFD700" stroke-width="2" />
+          <text x="700" y="480" text-anchor="middle" class="city-label">Toronto</text>
+          <text x="700" y="495" text-anchor="middle" class="city-distance">1,800 mi</text>
+        </g>
+
+        <g class="city-marker" data-city="montreal">
+          <circle cx="800" cy="450" r="10" fill="#4A90E2" stroke="#FFD700" stroke-width="2" />
+          <text x="800" y="480" text-anchor="middle" class="city-label">Montreal</text>
+          <text x="800" y="495" text-anchor="middle" class="city-distance">2,000 mi</text>
+        </g>
+
+        <g class="city-marker" data-city="seattle">
+          <circle cx="200" cy="450" r="10" fill="#4A90E2" stroke="#FFD700" stroke-width="2" />
+          <text x="200" y="480" text-anchor="middle" class="city-label">Seattle</text>
+          <text x="200" y="495" text-anchor="middle" class="city-distance">1,500 mi</text>
+        </g>
+
+        <!-- Winnipeg (convergence point) -->
+        <g class="city-marker convergence">
+          <circle cx="500" cy="350" r="15" fill="#E94E77" stroke="#FFD700" stroke-width="3" />
+          <text x="500" y="390" text-anchor="middle" class="city-label convergence-label">Winnipeg</text>
+          <text x="500" y="405" text-anchor="middle" class="city-sublabel">Convergence Point</text>
+        </g>
+
+        <!-- Churchill (final destination) -->
+        <g class="city-marker destination">
+          <circle cx="500" cy="100" r="18" fill="#2ECC71" stroke="#FFD700" stroke-width="3" filter="url(#glow)" />
+          <circle cx="500" cy="100" r="12" fill="#FFD700" opacity="0.5" />
+          <text x="500" y="70" text-anchor="middle" class="city-label destination-label">Churchill, Manitoba</text>
+          <text x="500" y="85" text-anchor="middle" class="city-sublabel">Final Destination</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Route Information Cards -->
+    <div class="route-info">
+      <h2 class="section-title">Departure Cities</h2>
+      <div class="cities-grid">
+        @for (city of cities; track city.id) {
+          <div class="city-info-card">
+            <h3 class="city-name">{{ city.name }}</h3>
+            <p class="station-name">{{ city.station }}</p>
+            <p class="station-address">{{ city.address }}</p>
+            <div class="route-details">
+              <p class="distance">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                {{ city.distanceToChurchill }} miles to Churchill
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Journey Flow -->
+    <div class="journey-flow">
+      <h2 class="section-title">Your Journey</h2>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="step-number">1</div>
+          <h3>Departure</h3>
+          <p>Board the Polar Express at your chosen departure city</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="step-number">2</div>
+          <h3>Convergence</h3>
+          <p>All trains meet in Winnipeg, Manitoba</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="step-number">3</div>
+          <h3>Destination</h3>
+          <p>Journey north to Churchill, Manitoba</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,527 @@
+.tracker {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #e0e0e0;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.page-title {
+  font-size: 3rem;
+  text-align: center;
+  color: #FFD700;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.page-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  margin-bottom: 3rem;
+}
+
+/* City Selection */
+.city-selection-prompt {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.city-selection-prompt h2 {
+  font-size: 2rem;
+  color: #FFD700;
+  margin-bottom: 1rem;
+}
+
+.city-selection-prompt p {
+  color: #b0b0b0;
+  margin-bottom: 2rem;
+}
+
+.city-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.city-selector-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: #FFD700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.city-selector-btn:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: #FFD700;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+.city-selector-btn h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #FFD700;
+}
+
+.city-selector-btn p {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+  margin: 0;
+}
+
+/* Journey Info Card */
+.journey-info-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.info-header h2 {
+  font-size: 1.8rem;
+  color: #FFD700;
+  margin: 0;
+}
+
+.change-city-btn {
+  background: rgba(255, 215, 0, 0.2);
+  border: 1px solid #FFD700;
+  color: #FFD700;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.change-city-btn:hover {
+  background: #FFD700;
+  color: #1a1a2e;
+}
+
+.journey-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-label {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #FFD700;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Progress Tracker */
+.progress-tracker {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.tracker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.tracker-header h2 {
+  font-size: 2rem;
+  color: #FFD700;
+  margin: 0;
+}
+
+.progress-percentage {
+  font-size: 2.5rem;
+  color: #2ECC71;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+/* Visual Progress */
+.progress-visual {
+  margin-bottom: 3rem;
+}
+
+.progress-track {
+  position: relative;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  margin: 3rem 0;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #FFD700, #2ECC71);
+  border-radius: 50px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.milestone-marker {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.marker-dot {
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(255, 215, 0, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.milestone-marker.passed .marker-dot {
+  background: #2ECC71;
+  border-color: #2ECC71;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+.milestone-marker.current .marker-dot {
+  background: #FFD700;
+  border-color: #FFD700;
+  width: 24px;
+  height: 24px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2);
+  }
+}
+
+.marker-label {
+  position: absolute;
+  top: 60px;
+  font-size: 0.75rem;
+  color: #b0b0b0;
+  white-space: nowrap;
+  text-align: center;
+  width: 120px;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.milestone-marker.current .marker-label {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.train-position {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  transition: left 0.5s ease;
+}
+
+.train-position svg {
+  color: #FFD700;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  animation: trainMove 2s ease-in-out infinite;
+}
+
+@keyframes trainMove {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Progress Control */
+.progress-control {
+  margin: 2rem 0;
+}
+
+.progress-control label {
+  display: block;
+  color: #b0b0b0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.progress-slider {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.progress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: #FFD700;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.progress-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: #FFD700;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Journey Stats */
+.journey-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.stat-icon {
+  color: #FFD700;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  color: #FFD700;
+  font-weight: bold;
+}
+
+/* Current Milestone Card */
+.current-milestone-card {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(46, 204, 113, 0.1));
+  border: 2px solid #FFD700;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.current-milestone-card h3 {
+  color: #b0b0b0;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.milestone-name {
+  font-size: 2.5rem;
+  color: #FFD700;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.milestone-description {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.milestone-progress {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FFD700, #2ECC71);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+/* Milestones List */
+.milestones-list {
+  margin-top: 3rem;
+}
+
+.milestones-list h2 {
+  font-size: 2rem;
+  color: #FFD700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.milestone-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.milestone-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.milestone-card.completed {
+  border-color: #2ECC71;
+  background: rgba(46, 204, 113, 0.1);
+}
+
+.milestone-card.current {
+  border-color: #FFD700;
+  background: rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.milestone-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
+
+.milestone-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.milestone-icon {
+  flex-shrink: 0;
+}
+
+.milestone-card h3 {
+  color: #FFD700;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.milestone-card.completed h3 {
+  color: #2ECC71;
+}
+
+.milestone-card p {
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.milestone-distance {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .progress-track {
+    height: 80px;
+    margin: 5rem 0;
+  }
+
+  .marker-label {
+    font-size: 0.65rem;
+    width: 80px;
+  }
+
+  .train-position svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .milestone-name {
+    font-size: 1.8rem;
+  }
+
+  .journey-stats {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,275 @@
+.routes {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #e0e0e0;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.page-title {
+  font-size: 3rem;
+  text-align: center;
+  color: #FFD700;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.page-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  margin-bottom: 3rem;
+}
+
+/* Route Map Visualization */
+.route-map-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.route-map {
+  width: 100%;
+  height: auto;
+  max-height: 800px;
+}
+
+.route-line {
+  opacity: 0;
+  animation: drawLine 1.5s ease-out forwards;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.main-route {
+  opacity: 0;
+  animation: drawLine 2s ease-out 1s forwards;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.city-marker circle {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.city-marker:hover circle {
+  r: 12;
+  filter: url(#glow);
+}
+
+.city-label {
+  fill: #FFD700;
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.city-distance {
+  fill: #b0b0b0;
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.city-sublabel {
+  fill: #b0b0b0;
+  font-size: 12px;
+  font-style: italic;
+  pointer-events: none;
+}
+
+.convergence-label {
+  font-size: 16px;
+  fill: #E94E77;
+}
+
+.destination-label {
+  font-size: 18px;
+  fill: #2ECC71;
+}
+
+/* Route Information Cards */
+.route-info {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #FFD700;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.city-info-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.city-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.city-name {
+  font-size: 1.5rem;
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+}
+
+.station-name {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+}
+
+.station-address {
+  font-size: 0.95rem;
+  color: #b0b0b0;
+  margin-bottom: 1rem;
+}
+
+.route-details {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.distance {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+.distance svg {
+  color: #FFD700;
+}
+
+/* Journey Flow */
+.journey-flow {
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.flow-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.flow-step {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.flow-step:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #1a1a2e;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.flow-step h3 {
+  font-size: 1.5rem;
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+}
+
+.flow-step p {
+  color: #b0b0b0;
+  line-height: 1.6;
+}
+
+.flow-arrow {
+  font-size: 2rem;
+  color: #FFD700;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .route-map-container {
+    padding: 1rem;
+  }
+
+  .city-label {
+    font-size: 11px;
+  }
+
+  .city-distance {
+    font-size: 9px;
+  }
+
+  .cities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-steps {
+    flex-direction: column;
+  }
+
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
+}
